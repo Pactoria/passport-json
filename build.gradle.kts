@@ -1,12 +1,18 @@
 plugins {
     id("java")
+    id("maven-publish")
 }
 
-group = "pactoria"
+group = "pactoria.passport.json"
 version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+}
+
+java {
+	withSourcesJar()
+	withJavadocJar()
 }
 
 dependencies {
@@ -19,4 +25,16 @@ dependencies {
     annotationProcessor("org.immutables:value:2.10.1")
 
     implementation("org.jetbrains:annotations:24.1.0")
+}
+
+publishing {
+    publications {
+        create("maven", MavenPublication::class) {
+            from(components["java"])
+        }
+    }
+}
+
+tasks.wrapper {
+    distributionType = Wrapper.DistributionType.ALL
 }

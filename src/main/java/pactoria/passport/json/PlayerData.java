@@ -1,4 +1,4 @@
-package passport.json;
+package pactoria.passport.json;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

@@ -5,7 +5,7 @@
         defaultAsDefault = true,
         allowedClasspathAnnotations = Nullable.class
 )
-package passport.json;
+package pactoria.passport.json.gateway;
 
 import org.immutables.value.Value;
 import org.jetbrains.annotations.Nullable;
