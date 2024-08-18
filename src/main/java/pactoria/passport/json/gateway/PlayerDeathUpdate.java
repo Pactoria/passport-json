@@ -1,10 +1,8 @@
 package pactoria.passport.json.gateway;
 
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
-import pactoria.passport.json.PlayerData;
 
 @Value.Immutable
 @JsonSerialize(as = ImmutablePlayerDeathUpdate.class)

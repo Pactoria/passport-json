@@ -25,6 +25,7 @@ dependencies {
     annotationProcessor("org.immutables:value:2.10.1")
 
     implementation("org.jetbrains:annotations:24.1.0")
+    compileOnly("com.google.code.findbugs:jsr305:3.0.1")
 }
 
 publishing {
