@@ -15,8 +15,7 @@ public interface PlayerDamageUpdate extends PayloadData {
         return ImmutablePlayerDamageUpdate.builder();
     }
 
-    @JsonUnwrapped
-    PlayerData player();
+    String player();
 
     String attacker();
 

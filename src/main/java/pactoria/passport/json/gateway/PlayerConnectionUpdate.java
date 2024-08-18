@@ -15,8 +15,7 @@ public interface PlayerConnectionUpdate extends PayloadData {
         return ImmutablePlayerConnectionUpdate.builder();
     }
 
-    @JsonUnwrapped
-    PlayerData player();
+    String player();
 
     String ip();
 
