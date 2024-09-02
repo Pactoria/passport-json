@@ -55,7 +55,7 @@ publishing {
 
             versionMapping {
                 usage("java-api") {
-                    fromResolutionOf("runtimeElements")
+                    fromResolutionOf("runtimeClasspath")
                 }
                 usage("java-runtime") {
                     fromResolutionResult()
