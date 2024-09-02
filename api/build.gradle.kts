@@ -1,4 +1,4 @@
-var archivesBaseName = "passport-json-$project.name"
+var archivesBaseName = "passport-json-${project.name}"
 
 group = "pactoria.passport.json"
 
