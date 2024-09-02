@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("java-library")
     id("maven-publish")
 }
 
@@ -11,21 +12,33 @@ repositories {
 }
 
 java {
-	withSourcesJar()
-	withJavadocJar()
+    withSourcesJar()
+    withJavadocJar()
 }
 
 dependencies {
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.12.7.1")
+    api(project(":api"))
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.2")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.12.7")
 
     compileOnly("org.immutables:value:2.10.1")
     compileOnly("org.immutables:builder:2.10.1")
     annotationProcessor("org.immutables:value:2.10.1")
+}
 
-    implementation("org.jetbrains:annotations:24.1.0")
-    compileOnly("com.google.code.findbugs:jsr305:3.0.1")
+allprojects {
+    apply(plugin = "java")
+
+    dependencies {
+        implementation("com.fasterxml.jackson.core:jackson-databind:2.12.7.1")
+        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.12.7")
+        implementation("org.jetbrains:annotations:24.1.0")
+        compileOnly("com.google.code.findbugs:jsr305:3.0.1")
+    }
+
+    tasks.withType(JavaCompile::class.java) {
+        options.encoding = "UTF-8"
+        options.isIncremental = true
+    }
 }
 
 publishing {

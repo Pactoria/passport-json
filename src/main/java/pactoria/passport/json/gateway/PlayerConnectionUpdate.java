@@ -3,6 +3,7 @@ package pactoria.passport.json.gateway;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
+import pactoria.passport.json.PlayerData;
 
 @Value.Immutable
 @JsonSerialize(as = ImmutablePlayerConnectionUpdate.class)
@@ -13,7 +14,7 @@ public interface PlayerConnectionUpdate extends PayloadData {
         return ImmutablePlayerConnectionUpdate.builder();
     }
 
-    String player();
+    PlayerData player();
 
     String ip();
 

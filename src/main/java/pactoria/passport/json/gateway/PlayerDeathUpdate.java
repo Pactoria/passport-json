@@ -3,6 +3,8 @@ package pactoria.passport.json.gateway;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
+import pactoria.passport.json.PlayerData;
+import pactoria.passport.json.api.perchance.Perchance;
 
 @Value.Immutable
 @JsonSerialize(as = ImmutablePlayerDeathUpdate.class)
@@ -13,13 +15,13 @@ public interface PlayerDeathUpdate extends PayloadData {
         return ImmutablePlayerDeathUpdate.builder();
     }
 
-    String player();
+    PlayerData player();
 
-    String attacker();
+    Perchance<PlayerData> attacker();
 
     String type();
 
-    String message();
+    Perchance<String> message();
 
     Long timestamp();
 }
