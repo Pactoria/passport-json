@@ -4,8 +4,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "pactoria.passport.json"
-version = "1.0-SNAPSHOT"
+var archivesBaseName = "passport-json"
 
 repositories {
     mavenCentral()
@@ -27,6 +26,8 @@ dependencies {
 
 allprojects {
     apply(plugin = "java")
+    apply(plugin = "java-library")
+    apply(plugin = "maven-publish")
 
     dependencies {
         implementation("com.fasterxml.jackson.core:jackson-databind:2.12.7.1")
@@ -39,13 +40,40 @@ allprojects {
         options.encoding = "UTF-8"
         options.isIncremental = true
     }
+
+    java {
+        withSourcesJar()
+        withJavadocJar()
+    }
 }
 
 publishing {
     publications {
         create("maven", MavenPublication::class) {
             from(components["java"])
+            artifactId = archivesBaseName
+
+            versionMapping {
+                usage("java-api") {
+                    fromResolutionOf("runtimeElements")
+                }
+                usage("java-runtime") {
+                    fromResolutionResult()
+                }
+            }
         }
+    }
+}
+
+tasks.jar {
+    manifest {
+        attributes(
+            mapOf(
+                "Implementation-Title" to archivesBaseName,
+                "Implementation-Version" to version,
+                "Automatic-Module-Name" to "pactoria.passport.json"
+            )
+        )
     }
 }
 
